@@ -1,0 +1,477 @@
+/* =========================================================
+   Sản phẩm CPT — style
+   Đổi màu / font tại :root là toàn bộ UI đổi theo.
+   ======================================================= */
+:root {
+	--spc-red: #ca2027;
+	--spc-red-dark: #a8181e;
+	--spc-orange: #f58220;
+	--spc-btn-radius: 4px;
+	--spc-grad: linear-gradient(90deg, var(--spc-red), var(--spc-orange));
+	--spc-dark: #1e1e22;
+	--spc-text: #1f1f23;
+	--spc-muted: #6b6f76;
+	--spc-soft: #f3f3f6;
+	--spc-line: #e4e4e8;
+	--spc-radius: 4px;
+	--spc-font: "Be Vietnam Pro", system-ui, -apple-system, "Segoe UI", sans-serif;
+	--spc-max: 1280px;
+}
+
+/* ---------- Astra: cho phép section tràn full chiều ngang ---------- */
+.spc-body .site-content > .ast-container {
+	max-width: none;
+	padding: 0;
+	display: block;
+}
+.spc-body #primary { margin: 0; padding: 0; width: 100%; }
+
+.spc-hero, .spc-detail, .spc-related, .spc-listing, .spc-grid {
+	font-family: var(--spc-font);
+	color: var(--spc-text);
+}
+.spc-hero *, .spc-detail *, .spc-related *, .spc-listing *, .spc-grid * { box-sizing: border-box; }
+
+.spc-wrap {
+	max-width: var(--spc-max);
+	margin: 0 auto;
+	padding: 0 24px;
+}
+
+/* ---------- Eyebrow "| SẢN PHẨM" ---------- */
+.spc-eyebrow {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	margin: 0 0 14px;
+	font-size: 13px;
+	font-weight: 700;
+	letter-spacing: .18em;
+	text-transform: uppercase;
+	color: #fff;
+}
+.spc-eyebrow::before {
+	content: "";
+	width: 3px;
+	height: 14px;
+	background: var(--spc-red);
+}
+.spc-eyebrow--dark { color: var(--spc-muted); }
+
+.spc-section-title {
+	font-family: var(--spc-font);
+	font-size: clamp(26px, 3vw, 36px);
+	font-weight: 800;
+	text-transform: uppercase;
+	margin: 0 0 32px;
+	color: var(--spc-text);
+}
+.spc-section-title span { color: var(--spc-red); }
+.spc-section-title--bar {
+	position: relative;
+	padding-bottom: 22px;
+	margin-bottom: 44px;
+}
+.spc-section-title--bar::after {
+	content: "";
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	width: 76px;
+	height: 6px;
+	border-radius: 3px;
+	background: var(--spc-grad);
+}
+
+/* =========================================================
+   HERO
+   ======================================================= */
+.spc-hero {
+	position: relative;
+	background-color: var(--spc-dark);
+	background-image: repeating-linear-gradient(
+		115deg,
+		transparent 0 38px,
+		rgba(255, 255, 255, .045) 38px 39px
+	);
+	color: #fff;
+	padding: 28px 0 72px;
+}
+.spc-hero::after {
+	content: "";
+	position: absolute;
+	left: 0; right: 0; bottom: 0;
+	height: 4px;
+	background: var(--spc-grad);
+}
+.spc-breadcrumb {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 10px;
+	font-size: 14px;
+	color: rgba(255, 255, 255, .55);
+	margin-bottom: 38px;
+}
+.spc-breadcrumb a { color: inherit; text-decoration: none; }
+.spc-breadcrumb a:hover { color: #fff; }
+.spc-breadcrumb strong { color: #fff; font-weight: 600; }
+
+.spc-hero__title {
+	font-family: var(--spc-font);
+	font-size: clamp(34px, 5vw, 60px);
+	line-height: 1.1;
+	font-weight: 800;
+	letter-spacing: -.01em;
+	text-transform: uppercase;
+	color: #fff;
+	margin: 0 0 22px;
+}
+.spc-hero__lead {
+	max-width: 900px;
+	font-size: 18px;
+	line-height: 1.65;
+	color: rgba(255, 255, 255, .8);
+	margin: 0;
+}
+
+/* =========================================================
+   CHI TIẾT
+   ======================================================= */
+.spc-detail { padding: 100px 0 90px; background: #fff; }
+.spc-detail__grid {
+	display: grid;
+	grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+	gap: 64px;
+	align-items: start;
+}
+.spc-detail__grid > * { min-width: 0; }
+.spc-detail__media { display: grid; grid-template-columns: minmax(0, 1fr); gap: 24px; }
+
+.spc-detail__main {
+	position: relative;
+	display: block;
+	width: 100%;
+	cursor: zoom-in;
+	aspect-ratio: 4 / 3;
+	background: var(--spc-soft);
+	border: 1px solid var(--spc-line);
+	border-radius: var(--spc-radius);
+	overflow: hidden;
+}
+.spc-detail__main img {
+	position: absolute;
+	top: 32px;
+	left: 32px;
+	width: calc(100% - 64px) !important;
+	height: calc(100% - 64px) !important;
+	max-width: none;
+	object-fit: contain;
+}
+
+.spc-gallery {
+	display: grid;
+	grid-template-columns: repeat(3, minmax(0, 1fr));
+	gap: 12px;
+}
+.spc-gallery__item {
+	position: relative;
+	display: block;
+	aspect-ratio: 1 / 1;
+	border-radius: var(--spc-radius);
+	overflow: hidden;
+	background: var(--spc-soft);
+	cursor: zoom-in;
+	-webkit-mask-image: -webkit-radial-gradient(white, black); /* Safari: giữ bo góc khi overflow hidden */
+}
+.spc-gallery__item img {
+	position: absolute;
+	inset: 0;
+	width: 100% !important;
+	height: 100% !important;
+	max-width: none;
+	object-fit: cover;
+	display: block;
+	transition: transform .35s ease;
+}
+.spc-gallery__item:hover img { transform: scale(1.06); }
+
+/* ---------- Lightbox ---------- */
+.spc-lb-lock { overflow: hidden; }
+.spc-lb {
+	position: fixed;
+	inset: 0;
+	z-index: 99999;
+	display: none;
+	align-items: center;
+	justify-content: center;
+	padding: 56px 72px;
+	background: rgba(12, 12, 14, .92);
+	font-family: var(--spc-font);
+}
+.spc-lb.is-open { display: flex; }
+.spc-lb__img {
+	max-width: 100%;
+	max-height: 100%;
+	object-fit: contain;
+	border-radius: 6px;
+	box-shadow: 0 10px 40px rgba(0, 0, 0, .5);
+}
+.spc-lb button {
+	position: absolute;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	border: 0;
+	padding: 0;
+	border-radius: 50%;
+	background: rgba(255, 255, 255, .12);
+	color: #fff;
+	cursor: pointer;
+	line-height: 1;
+	transition: background .2s;
+}
+.spc-lb button:hover, .spc-lb button:focus-visible { background: var(--spc-red); outline: none; }
+.spc-lb__close { top: 14px; right: 14px; width: 44px; height: 44px; font-size: 30px; }
+.spc-lb__nav { top: 50%; width: 48px; height: 48px; margin-top: -24px; font-size: 34px; }
+.spc-lb__prev { left: 14px; }
+.spc-lb__next { right: 14px; }
+.spc-lb__count {
+	position: absolute;
+	bottom: 16px;
+	left: 50%;
+	transform: translateX(-50%);
+	color: rgba(255, 255, 255, .8);
+	font-size: 14px;
+}
+.spc-lb--single .spc-lb__nav, .spc-lb--single .spc-lb__count { display: none; }
+
+.spc-detail__sub {
+	margin: 0 0 22px;
+	font-size: 14px;
+	font-weight: 700;
+	letter-spacing: .16em;
+	text-transform: uppercase;
+	color: var(--spc-muted);
+}
+
+.spc-divider {
+	border: 0;
+	border-top: 1px solid var(--spc-line);
+	margin: 30px 0 44px;
+}
+
+.spc-content { font-size: 17px; line-height: 1.85; color: #3a3d43; }
+.spc-content p { margin: 0 0 20px; }
+.spc-content strong { color: var(--spc-text); font-weight: 700; }
+
+/* ---------- Danh sách hình thoi ---------- */
+.spc-list { list-style: none; margin: 0 0 24px; padding: 0; }
+.spc-list li {
+	position: relative;
+	padding-left: 28px;
+	margin-bottom: 12px;
+	font-size: 16px;
+	line-height: 1.45;
+	color: var(--spc-text);
+}
+.spc-list li::before {
+	content: "";
+	position: absolute;
+	left: 3px;
+	top: .5em;
+	width: 8px;
+	height: 8px;
+	background: var(--spc-red);
+	transform: rotate(45deg);
+}
+.spc-list--lg li { font-size: 18px; font-weight: 600; margin-bottom: 18px; }
+
+/* ---------- Nút ---------- */
+.spc-actions { display: flex; flex-wrap: wrap; gap: 16px; margin-top: 36px; }
+.spc-btn {
+	display: inline-flex;
+	align-items: center;
+	gap: 10px;
+	height: 58px;
+	padding: 0 30px;
+	border-radius: var(--spc-btn-radius);
+	font-family: var(--spc-font);
+	font-size: 17px;
+	font-weight: 700;
+	text-decoration: none !important;
+	transition: background-color .2s, box-shadow .2s, border-color .2s, color .2s;
+}
+.spc-btn--primary {
+	background: var(--spc-red);
+	border: 1.5px solid var(--spc-red);
+	color: #fff !important;
+}
+.spc-btn--primary:hover {
+	background: var(--spc-red-dark);
+	border-color: var(--spc-red-dark);
+	box-shadow: 0 8px 20px rgba(202, 32, 39, .28);
+}
+.spc-btn--ghost {
+	background: #fff;
+	color: var(--spc-text) !important;
+	border: 1.5px solid var(--spc-line);
+}
+.spc-btn--ghost:hover { border-color: var(--spc-red); color: var(--spc-red) !important; }
+
+/* =========================================================
+   CARD + GRID
+   ======================================================= */
+.spc-grid {
+	display: grid;
+	grid-template-columns: repeat(var(--spc-cols, 4), minmax(0, 1fr));
+	gap: 28px;
+}
+
+.spc-card {
+	min-width: 0;
+	display: flex;
+	flex-direction: column;
+	background: #fff;
+	border: 1px solid var(--spc-line);
+	border-radius: var(--spc-radius);
+	overflow: hidden;
+	box-shadow: 0 4px 18px rgba(20, 20, 30, .05);
+	transition: transform .25s, box-shadow .25s;
+}
+.spc-card:hover { transform: translateY(-6px); box-shadow: 0 18px 40px rgba(20, 20, 30, .12); }
+
+.spc-card__media {
+	position: relative;
+	display: block;
+	width: 100%;
+	aspect-ratio: 1 / .92;
+	background: var(--spc-soft);
+	overflow: hidden;
+}
+.spc-card__media img {
+	position: absolute;
+	top: 56px;
+	left: 28px;
+	width: calc(100% - 56px) !important;
+	height: calc(100% - 80px) !important;
+	max-width: none;
+	object-fit: contain;
+	transition: transform .35s;
+}
+.spc-card:hover .spc-card__media img { transform: scale(1.05); }
+
+.spc-card__num {
+	position: absolute;
+	top: 18px;
+	left: 30px;
+	font-family: var(--spc-font);
+	font-size: 46px;
+	font-weight: 800;
+	line-height: 1;
+	color: #d6d6dc;
+	z-index: 1;
+}
+
+.spc-card__body {
+	display: flex;
+	flex-direction: column;
+	flex: 1;
+	padding: 30px 36px 36px;
+}
+.spc-card__title {
+	font-family: var(--spc-font);
+	font-size: 24px;
+	line-height: 1.3;
+	font-weight: 800;
+	text-transform: uppercase;
+	margin: 0 0 8px;
+}
+.spc-card__title a { color: var(--spc-text); text-decoration: none; }
+.spc-card__title a:hover { color: var(--spc-red); }
+
+.spc-card__sub {
+	margin: 0 0 18px;
+	font-size: 13px;
+	font-weight: 700;
+	letter-spacing: .16em;
+	text-transform: uppercase;
+	color: var(--spc-muted);
+}
+.spc-card__excerpt {
+	margin: 0 0 22px;
+	font-size: 16px;
+	line-height: 1.6;
+	color: #3a3d43;
+	display: -webkit-box;
+	-webkit-line-clamp: 2;
+	-webkit-box-orient: vertical;
+	overflow: hidden;
+}
+
+.spc-card__more {
+	margin-top: auto;
+	padding-top: 8px;
+	font-size: 17px;
+	font-weight: 700;
+	color: var(--spc-red) !important;
+	text-decoration: none !important;
+}
+.spc-card__more span { display: inline-block; transition: transform .2s; }
+.spc-card__more:hover span { transform: translateX(4px); }
+
+/* ---------- Khu vực phụ ---------- */
+.spc-related { padding: 80px 0 100px; background: var(--spc-soft); }
+.spc-listing { padding: 80px 0 100px; background: var(--spc-soft); }
+
+.spc-pagination { margin-top: 48px; display: flex; justify-content: center; gap: 8px; }
+.spc-pagination .page-numbers {
+	min-width: 44px;
+	height: 44px;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	border-radius: var(--spc-btn-radius);
+	background: #fff;
+	border: 1px solid var(--spc-line);
+	color: var(--spc-text);
+	font-weight: 600;
+	text-decoration: none;
+}
+.spc-pagination .current { background: var(--spc-red); color: #fff; border-color: transparent; }
+
+/* =========================================================
+   RESPONSIVE
+   ======================================================= */
+@media (max-width: 1100px) {
+	.spc-grid { grid-template-columns: repeat(min(var(--spc-cols, 4), 2), minmax(0, 1fr)); }
+}
+@media (max-width: 900px) {
+	.spc-detail { padding: 60px 0; }
+	.spc-detail__grid { grid-template-columns: minmax(0, 1fr); gap: 40px; }
+}
+@media (max-width: 600px) {
+	.spc-wrap { padding: 0 16px; }
+	.spc-hero { padding: 20px 0 48px; }
+	.spc-breadcrumb { margin-bottom: 24px; }
+	.spc-hero__lead { font-size: 16px; }
+	.spc-grid { grid-template-columns: minmax(0, 1fr); gap: 20px; }
+	.spc-detail__main img { top: 20px; left: 20px; width: calc(100% - 40px) !important; height: calc(100% - 40px) !important; }
+	.spc-gallery { gap: 8px; }
+	.spc-lb { padding: 56px 12px; }
+	.spc-lb__nav { top: auto; bottom: 8px; margin-top: 0; }
+	.spc-card__body { padding: 24px; }
+	.spc-card__title { font-size: 21px; }
+	.spc-btn { height: 52px; padding: 0 22px; font-size: 16px; }
+	.spc-actions .spc-btn--primary { width: 100%; justify-content: center; }
+}
+
+/* ---------- Trình duyệt cũ không hỗ trợ aspect-ratio (iOS < 15) ---------- */
+@supports not (aspect-ratio: 1 / 1) {
+	.spc-detail__main    { height: 0; padding-top: 75%; }
+	.spc-gallery__item   { height: 0; padding-top: 100%; }
+	.spc-card__media     { height: 0; padding-top: 92%; }
+}
+
+/* ---------- Chặn tràn ngang trên mobile ---------- */
+.spc-hero, .spc-detail, .spc-related, .spc-listing { overflow-x: hidden; }
+.spc-content img, .spc-content iframe, .spc-content video { max-width: 100%; height: auto; }
