@@ -71,7 +71,9 @@
 	}
 
 	Array.prototype.forEach.call(groups, function (group) {
-		var links = Array.prototype.slice.call(group.querySelectorAll('a'));
+		// Chỉ lấy link ảnh có data-spc-lb (bỏ qua nút Báo giá / Zalo…); template cũ không có thì lấy mọi <a>.
+		var links = Array.prototype.slice.call(group.querySelectorAll('a[data-spc-lb]'));
+		if (!links.length) { links = Array.prototype.slice.call(group.querySelectorAll('a')); }
 		links.forEach(function (a, i) {
 			a.addEventListener('click', function (e) {
 				e.preventDefault();

@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Sản phẩm (Custom Post Type)
  * Description: Tạo post type "Sản phẩm" + trường thông tin riêng + shortcode lưới card [san_pham_grid] + template trang chi tiết.
- * Version:     1.3.0
+ * Version:     1.3.1
  * Author:      Kelv
  * Text Domain: spc
  */
@@ -11,9 +11,17 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
+// Đã có một bản plugin khác đang chạy (cài trùng ở thư mục khác) -> dừng để tránh lỗi "Cannot redeclare".
+if ( defined( 'SPC_VER' ) ) {
+	add_action( 'admin_notices', function () {
+		echo '<div class="notice notice-error"><p><strong>Sản phẩm (CPT):</strong> đang có 2 bản plugin được cài. Hãy tắt và xoá bản cũ, chỉ giữ một bản.</p></div>';
+	} );
+	return;
+}
+
 define( 'SPC_DIR', plugin_dir_path( __FILE__ ) );
 define( 'SPC_URL', plugin_dir_url( __FILE__ ) );
-define( 'SPC_VER', '1.3.0' );
+define( 'SPC_VER', '1.3.1' );
 
 /* =========================================================
  * 1. ĐĂNG KÝ POST TYPE
